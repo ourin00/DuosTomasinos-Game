@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnx035wwj1hnn"]
+
+[ext_resource type="Script" uid="uid://bxpvc0s5snbqo" path="res://Scripts/tower.gd" id="1_mh5eo"]
+[ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="2_mh5eo"]
+[ext_resource type="Resource" uid="uid://b6hxhsrcnv67t" path="res://Tower_Stats.tres" id="2_tghyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ijq"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tghyl"]
+radius = 51.0098
+
+[node name="Tower" type="Node2D"]
+script = ExtResource("1_mh5eo")
+tower = ExtResource("2_tghyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mh5eo")
+
+[node name="HP" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HP"]
+shape = SubResource("RectangleShape2D_y1ijq")
+
+[node name="CheckForEnemies" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckForEnemies"]
+shape = SubResource("CircleShape2D_tghyl")

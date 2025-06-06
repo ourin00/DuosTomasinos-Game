@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbfsm1bcd6vmo"]
+
+[ext_resource type="Script" uid="uid://dlisxiu1svfrl" path="res://Scripts/hand.gd" id="3_vxpd3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Container" parent="CanvasLayer"]
+custom_minimum_size = Vector2(500, 100)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 500.0
+grow_vertical = 0
+script = ExtResource("3_vxpd3")
+
+[node name="Button" type="Button" parent="CanvasLayer/Container"]
+layout_mode = 2
+text = "Spawn"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 426.0
+offset_top = 303.0
+offset_right = 550.0
+offset_bottom = 334.0
+text = "Deal 1 Damage"
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Container/Button" to="CanvasLayer/Container" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Container" method="_on_button_2_pressed"]

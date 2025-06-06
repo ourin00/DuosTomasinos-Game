@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TowerStats" load_steps=3 format=3 uid="uid://b6hxhsrcnv67t"]
+
+[ext_resource type="Script" uid="uid://bags8kijvimwq" path="res://Custom_resources/towerstats.gd" id="1_bgrdh"]
+[ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="1_eacwd"]
+
+[resource]
+script = ExtResource("1_bgrdh")
+max_health = 2
+art = ExtResource("1_eacwd")
+metadata/_custom_type_script = "uid://bags8kijvimwq"
