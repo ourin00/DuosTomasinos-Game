@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnx035wwj1hnn"]
+[gd_scene load_steps=10 format=3 uid="uid://dnx035wwj1hnn"]
 
 [ext_resource type="Script" uid="uid://bxpvc0s5snbqo" path="res://Scripts/tower.gd" id="1_mh5eo"]
 [ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="2_mh5eo"]
-[ext_resource type="Resource" uid="uid://b6hxhsrcnv67t" path="res://Tower_Stats.tres" id="2_tghyl"]
+[ext_resource type="Script" uid="uid://b8o7jtspj3i1t" path="res://Scripts/States/tower_state_machine.gd" id="4_ou3m2"]
+[ext_resource type="Script" uid="uid://cop7vhlma6th0" path="res://Scripts/States/clicked.gd" id="5_81kva"]
+[ext_resource type="Script" uid="uid://lhrsyi3ufrfm" path="res://Scripts/States/idle.gd" id="5_mxwle"]
+[ext_resource type="Script" uid="uid://dws3n3o17cfop" path="res://Scripts/States/dragging.gd" id="6_mxwle"]
+[ext_resource type="Script" uid="uid://imq1x3uwwgv2" path="res://Scripts/States/released.gd" id="7_oh166"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ijq"]
 size = Vector2(32, 32)
@@ -12,7 +16,6 @@ radius = 51.0098
 
 [node name="Tower" type="Node2D"]
 script = ExtResource("1_mh5eo")
-tower = ExtResource("2_tghyl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mh5eo")
@@ -26,3 +29,26 @@ shape = SubResource("RectangleShape2D_y1ijq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckForEnemies"]
 shape = SubResource("CircleShape2D_tghyl")
+
+[node name="State_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("4_ou3m2")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_machine" node_paths=PackedStringArray("clicked_state")]
+script = ExtResource("5_mxwle")
+clicked_state = NodePath("../Clicked")
+
+[node name="Clicked" type="Node" parent="State_machine" node_paths=PackedStringArray("released_state", "drag_state")]
+script = ExtResource("5_81kva")
+released_state = NodePath("../Released")
+drag_state = NodePath("../Dragging")
+
+[node name="Dragging" type="Node" parent="State_machine" node_paths=PackedStringArray("released_state")]
+script = ExtResource("6_mxwle")
+released_state = NodePath("../Released")
+
+[node name="Released" type="Node" parent="State_machine"]
+script = ExtResource("7_oh166")
+
+[connection signal="mouse_entered" from="HP" to="State_machine" method="on_mouse_entered"]
+[connection signal="mouse_exited" from="HP" to="State_machine" method="on_mouse_exited"]

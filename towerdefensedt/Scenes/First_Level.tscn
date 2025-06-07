@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbfsm1bcd6vmo"]
+[gd_scene load_steps=3 format=3 uid="uid://cbfsm1bcd6vmo"]
 
+[ext_resource type="PackedScene" uid="uid://dnx035wwj1hnn" path="res://Scenes/tower.tscn" id="2_jja7s"]
 [ext_resource type="Script" uid="uid://dlisxiu1svfrl" path="res://Scripts/hand.gd" id="3_vxpd3"]
 
 [node name="Main" type="Node2D"]
@@ -28,6 +29,9 @@ offset_bottom = 334.0
 text = "Deal 1 Damage"
 
 [node name="Enemy" type="Node2D" parent="."]
+
+[node name="Tower" parent="." instance=ExtResource("2_jja7s")]
+position = Vector2(345, 136)
 
 [connection signal="pressed" from="CanvasLayer/Container/Button" to="CanvasLayer/Container" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Container" method="_on_button_2_pressed"]
