@@ -7,7 +7,8 @@ extends Node2D
 #func set_tower_stats(value:TowerStats) -> void:
 #	tower = value.create_instance()
 
-
+func play():
+	queue_free()
 func _ready() -> void:
 	tower_state_machine.init(self)
 

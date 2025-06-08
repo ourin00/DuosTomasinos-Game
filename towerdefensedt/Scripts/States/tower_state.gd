@@ -19,8 +19,14 @@ func on_gui_input(_event: InputEvent)-> TowerState:
 func on_mouse_entered()-> TowerState:
 	return null
 
-func on_mouse_exited()->TowerState:
+func on_mouse_exited()-> TowerState:
 	return null
 
 func process_frame(_delta: float) -> TowerState:
+	return null
+
+func on_body_entered(_body)-> TowerState:
+	return null
+
+func on_body_exited(_body)-> TowerState:
 	return null

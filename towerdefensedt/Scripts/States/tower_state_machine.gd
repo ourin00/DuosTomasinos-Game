@@ -13,7 +13,7 @@ func init(parent: Tower)->void:
 
 func change_state(new_state: TowerState)->void:
 	if current_state:
-		current_state.exit
+		current_state.exit()
 	current_state = new_state
 	current_state.enter()
 
@@ -39,5 +39,16 @@ func on_mouse_exited()->void:
 
 func process_frame(delta: float) ->void:
 	var new_state = current_state.process_frame(delta)
+	if new_state:
+		change_state(new_state)
+
+
+func on_body_entered(body) -> void:
+	var new_state = current_state.on_body_entered(body)
+	if new_state:
+		change_state(new_state)
+
+func on_body_exited(body) -> void:
+	var new_state = current_state.on_body_exited(body)
 	if new_state:
 		change_state(new_state)

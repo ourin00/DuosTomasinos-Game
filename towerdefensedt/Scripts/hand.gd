@@ -5,7 +5,7 @@ extends Container
 var tower_instance
 #spawns tower
 func _on_button_pressed() -> void:
-	var tower_instance = TOWER.instantiate()
+	tower_instance = TOWER.instantiate()
 	add_child(tower_instance)
 	
 #deals damage to tower
