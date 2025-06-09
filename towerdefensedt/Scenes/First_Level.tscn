@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbfsm1bcd6vmo"]
+[gd_scene load_steps=6 format=3 uid="uid://cbfsm1bcd6vmo"]
 
 [ext_resource type="PackedScene" uid="uid://dnx035wwj1hnn" path="res://Scenes/tower.tscn" id="2_jja7s"]
+[ext_resource type="Script" uid="uid://b6n63j27chb5h" path="res://Scripts/restzone.gd" id="3_u2s4w"]
 [ext_resource type="Script" uid="uid://dlisxiu1svfrl" path="res://Scripts/hand.gd" id="3_vxpd3"]
 [ext_resource type="Texture2D" uid="uid://cqlk0ojxoyse" path="res://icon.svg" id="3_y1wlx"]
 
@@ -38,28 +39,30 @@ text = "Deal 1 Damage"
 z_index = 10
 position = Vector2(345, 136)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Restzone" type="Node2D" parent="." groups=["placable"]]
 position = Vector2(219, 169)
+script = ExtResource("3_u2s4w")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Restzone"]
 texture = ExtResource("3_y1wlx")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" groups=["placable"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="Restzone"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Restzone/StaticBody2D"]
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_u2s4w")
 
-[node name="Node2D2" type="Node2D" parent="."]
-position = Vector2(521, 223)
+[node name="Restzone2" type="Node2D" parent="." groups=["placable"]]
+position = Vector2(570, 217)
+script = ExtResource("3_u2s4w")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="Restzone2"]
 texture = ExtResource("3_y1wlx")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D2" groups=["placable"]]
+[node name="StaticBody2D" type="StaticBody2D" parent="Restzone2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/StaticBody2D"]
-position = Vector2(-1, 1.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Restzone2/StaticBody2D"]
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_u2s4w")
 
 [connection signal="pressed" from="CanvasLayer/Container/Button" to="CanvasLayer/Container" method="_on_button_pressed"]
