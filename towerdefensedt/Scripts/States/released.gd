@@ -23,11 +23,11 @@ func process_frame(delta: float)-> TowerState:
 			child.select()
 			rest_point = child.global_position
 			shortest_dist = distance
-	parent.global_position = lerp(parent.global_position,rest_point,10*delta)
+			parent.global_position = lerp(parent.global_position,rest_point,10*delta)
 	if are_vectors_equal(parent.global_position,rest_point) == true:
-		return idle_state
-
+		return play_state
 	return null
 
 func are_vectors_equal(a: Vector2, b: Vector2) -> bool:
+	print(a.distance_to(b) < 1)
 	return a.distance_to(b) < 1

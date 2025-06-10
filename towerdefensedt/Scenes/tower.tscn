@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnx035wwj1hnn"]
+[gd_scene load_steps=11 format=3 uid="uid://dnx035wwj1hnn"]
 
 [ext_resource type="Script" uid="uid://bxpvc0s5snbqo" path="res://Scripts/tower.gd" id="1_mh5eo"]
 [ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="2_mh5eo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://lhrsyi3ufrfm" path="res://Scripts/States/idle.gd" id="5_mxwle"]
 [ext_resource type="Script" uid="uid://dws3n3o17cfop" path="res://Scripts/States/dragging.gd" id="6_mxwle"]
 [ext_resource type="Script" uid="uid://imq1x3uwwgv2" path="res://Scripts/States/released.gd" id="7_oh166"]
+[ext_resource type="Script" uid="uid://c7ib6p2kbm8hk" path="res://Scripts/States/play.gd" id="8_8xwd3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ijq"]
 size = Vector2(32, 32)
@@ -48,9 +49,14 @@ script = ExtResource("6_mxwle")
 released_state = NodePath("../Released")
 idle_state = NodePath("../Idle")
 
-[node name="Released" type="Node" parent="State_machine" node_paths=PackedStringArray("idle_state")]
+[node name="Released" type="Node" parent="State_machine" node_paths=PackedStringArray("idle_state", "play_state")]
 script = ExtResource("7_oh166")
 idle_state = NodePath("../Idle")
+play_state = NodePath("../Play")
+
+[node name="Play" type="Node" parent="State_machine" node_paths=PackedStringArray("clicked_state")]
+script = ExtResource("8_8xwd3")
+clicked_state = NodePath("../Clicked")
 
 [connection signal="body_entered" from="HP" to="State_machine" method="on_body_entered"]
 [connection signal="body_exited" from="HP" to="State_machine" method="on_body_exited"]
