@@ -1,8 +1,6 @@
 #dragging
 extends TowerState
 
-signal body_recieved(body)
-
 @export var released_state: TowerState
 @export var idle_state: TowerState
 var current_position
@@ -40,11 +38,10 @@ func process_frame(delta: float)-> TowerState:
 			child.select()
 	return null
 
-func on_body_entered(body: Node2D)->TowerState:
+func on_body_entered(_body: Node2D)->TowerState:
 	mouse_entered=true
-	body_recieved.emit(body)
 	return null
 
-func on_body_exited(body: Node2D)->TowerState:
+func on_body_exited(_body: Node2D)->TowerState:
 	mouse_entered=false
 	return null

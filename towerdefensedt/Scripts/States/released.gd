@@ -18,7 +18,7 @@ func enter():
 func process_frame(delta: float)-> TowerState:
 	var shortest_dist = 75
 	for child in rest_nodes:
-		var distance = parent.global_position.distance_to(child.global_position)
+		distance = parent.global_position.distance_to(child.global_position)
 		if distance < shortest_dist:
 			child.select()
 			rest_point = child.global_position

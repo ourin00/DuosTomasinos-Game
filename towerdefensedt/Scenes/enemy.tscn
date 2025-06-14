@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://mer6b2u1nfqm"]
+
+[ext_resource type="Script" uid="uid://bi6fos2yr6col" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="2_afpow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2s4w"]
+size = Vector2(34, 34)
+
+[node name="enemy" type="Node2D" groups=["enemy"]]
+script = ExtResource("1_1f0kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_afpow")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_u2s4w")

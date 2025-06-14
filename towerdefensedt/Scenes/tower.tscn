@@ -62,4 +62,5 @@ clicked_state = NodePath("../Clicked")
 [connection signal="body_exited" from="HP" to="State_machine" method="on_body_exited"]
 [connection signal="mouse_entered" from="HP" to="State_machine" method="on_mouse_entered"]
 [connection signal="mouse_exited" from="HP" to="State_machine" method="on_mouse_exited"]
-[connection signal="body_recieved" from="State_machine/Dragging" to="State_machine/Released" method="_on_dragging_body_recieved"]
+[connection signal="area_entered" from="CheckForEnemies" to="State_machine" method="on_area_entered"]
+[connection signal="area_exited" from="CheckForEnemies" to="State_machine" method="on_area_exited"]

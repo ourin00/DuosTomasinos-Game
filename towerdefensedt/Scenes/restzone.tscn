@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://crkngyeixh0xc"]
+
+[ext_resource type="Script" uid="uid://b6n63j27chb5h" path="res://Scripts/restzone.gd" id="1_doh8r"]
+[ext_resource type="Texture2D" uid="uid://cqlk0ojxoyse" path="res://icon.svg" id="2_breyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2s4w"]
+size = Vector2(136, 132)
+
+[node name="Restzone" type="Node2D" groups=["placable"]]
+script = ExtResource("1_doh8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_breyn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_u2s4w")
