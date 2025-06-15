@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnx035wwj1hnn"]
+[gd_scene load_steps=11 format=3 uid="uid://dnx035wwj1hnn"]
 
 [ext_resource type="Script" uid="uid://bxpvc0s5snbqo" path="res://Scripts/tower.gd" id="1_mh5eo"]
 [ext_resource type="Texture2D" uid="uid://264fy11vch40" path="res://Art/Crystal_turret.png" id="2_mh5eo"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://dws3n3o17cfop" path="res://Scripts/States/dragging.gd" id="6_mxwle"]
 [ext_resource type="Script" uid="uid://imq1x3uwwgv2" path="res://Scripts/States/released.gd" id="7_oh166"]
 [ext_resource type="Script" uid="uid://c7ib6p2kbm8hk" path="res://Scripts/States/play.gd" id="8_8xwd3"]
-[ext_resource type="Script" uid="uid://b1dw86jnssi34" path="res://Scripts/States/tower_state.gd" id="9_7m5bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1ijq"]
 size = Vector2(32, 32)
@@ -59,14 +58,9 @@ play_state = NodePath("../Play")
 script = ExtResource("8_8xwd3")
 clicked_state = NodePath("../Clicked")
 
-[node name="TowerState" type="Node" parent="State_machine"]
-script = ExtResource("9_7m5bu")
-
-[connection signal="tower_node" from="." to="State_machine/TowerState" method="_on_tower_tower_node"]
 [connection signal="body_entered" from="HP" to="State_machine" method="on_body_entered"]
 [connection signal="body_exited" from="HP" to="State_machine" method="on_body_exited"]
 [connection signal="mouse_entered" from="HP" to="State_machine" method="on_mouse_entered"]
 [connection signal="mouse_exited" from="HP" to="State_machine" method="on_mouse_exited"]
 [connection signal="area_entered" from="CheckForEnemies" to="State_machine" method="on_area_entered"]
 [connection signal="area_exited" from="CheckForEnemies" to="State_machine" method="on_area_exited"]
-[connection signal="node_forwarding" from="State_machine/TowerState" to="State_machine/Play" method="_on_node_forwarding"]

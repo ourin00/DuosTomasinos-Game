@@ -29,5 +29,4 @@ func process_frame(delta: float)-> TowerState:
 	return null
 
 func are_vectors_equal(a: Vector2, b: Vector2) -> bool:
-	print(a.distance_to(b) < 1)
 	return a.distance_to(b) < 1

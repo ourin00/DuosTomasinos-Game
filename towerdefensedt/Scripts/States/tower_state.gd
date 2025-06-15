@@ -1,8 +1,10 @@
 class_name TowerState
 extends Node
 
-var parent:Tower
-@onready var arrow= preload("res://Scenes/arrow.tscn")
+var parent: Tower
+var tower_node:=[]
+signal node_forwarding(node)
+@onready var arrow: PackedScene=preload("res://Scenes/arrow.tscn")
 func enter() -> void:
 	pass
 
@@ -36,3 +38,6 @@ func on_area_entered(_area: Area2D) -> TowerState:
 
 func on_area_exited(_area: Area2D) -> TowerState:
 	return null
+
+func _on_tower_tower_node(tower: Variant) -> void:
+	node_forwarding.emit(tower)

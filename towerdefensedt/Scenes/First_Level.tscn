@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbfsm1bcd6vmo"]
+[gd_scene load_steps=5 format=3 uid="uid://cbfsm1bcd6vmo"]
 
 [ext_resource type="PackedScene" uid="uid://dnx035wwj1hnn" path="res://Scenes/tower.tscn" id="2_jja7s"]
 [ext_resource type="Script" uid="uid://dlisxiu1svfrl" path="res://Scripts/hand.gd" id="3_vxpd3"]
 [ext_resource type="PackedScene" uid="uid://crkngyeixh0xc" path="res://Scenes/restzone.tscn" id="3_y1wlx"]
 [ext_resource type="PackedScene" uid="uid://mer6b2u1nfqm" path="res://Scenes/enemy.tscn" id="4_y1wlx"]
-[ext_resource type="PackedScene" uid="uid://dgwhbh6a8l3g1" path="res://Scenes/arrow.tscn" id="5_u2s4w"]
 
 [node name="Main" type="Node2D"]
 
@@ -42,8 +41,6 @@ position = Vector2(219, 169)
 position = Vector2(507, 210)
 
 [node name="enemy" parent="." instance=ExtResource("4_y1wlx")]
-
-[node name="Arrow" parent="." instance=ExtResource("5_u2s4w")]
 
 [connection signal="pressed" from="CanvasLayer/Container/Button" to="CanvasLayer/Container" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer/Container" method="_on_button_2_pressed"]
